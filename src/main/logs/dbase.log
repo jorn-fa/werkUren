@@ -1,0 +1,30 @@
+2018-06-14 01:02:01 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:02:01 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:02:01 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:02:01 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:02:50 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:02:50 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:02:50 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:02:50 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:19:28 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:19:28 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:19:29 ERROR dbase:34 - SqlExeption @ writeOrder
+2018-06-14 01:20:02 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:20:02 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:20:03 ERROR dbase:34 - SqlExeption @ writeDay
+2018-06-14 01:21:46 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:21:46 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:21:47 ERROR dbase:34 - SqlExeption @ writeDay
+2018-06-14 01:24:29 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:24:29 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:24:29 ERROR dbase:34 - SqlExeption @ writeDay
+2018-06-14 01:29:06 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:29:06 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:30:00 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:30:00 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:32:53 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:32:53 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:37:19 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:37:19 DEBUG dbase:45 - Property file read - ok 
+2018-06-14 01:45:42 DEBUG dbase:32 - loaded from config file: C:\javaprojects\werkuren\src\main\resources\dbase.properties
+2018-06-14 01:45:42 DEBUG dbase:45 - Property file read - ok 
