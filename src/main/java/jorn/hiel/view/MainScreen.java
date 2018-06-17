@@ -33,8 +33,7 @@ public class MainScreen implements Initializable {
 
     private ObservableList<Month> monthData ;
 
-    private TableView<Month> monthTable;
-    private TableColumn<Day,String> Monthday;
+
 
     @FXML
     private Label monthLabel;
@@ -67,27 +66,18 @@ public class MainScreen implements Initializable {
 
 
     @FXML
-    private List<Label> labels = new ArrayList<Label>();
-    private List<TextField> urenTextFields = new ArrayList<TextField>();
-    private List<TextField> extraTextFields = new ArrayList<TextField>();
-    private List<TextField> detailsTextFields = new ArrayList<TextField>();
+    private List<Label> labels = new ArrayList<>();
+    private List<TextField> urenTextFields = new ArrayList<>();
+    private List<TextField> extraTextFields = new ArrayList<>();
+    private List<TextField> detailsTextFields = new ArrayList<>();
 
 
 
 
 
 
-    @FXML
-    private TableView<Month> monthFirstHalfTable;
-    private TableColumn<Month,String> monthFirstHalfDate;
-    private TableColumn<Month,String> monthFirstHalfHour;
 
-    @FXML
-    private TableView monthSecondHalfTable;
 
-    public ObservableList<Month> getMonthData() {
-        return FXCollections.observableArrayList(monthData);
-    }
 
 
     @FXML
@@ -95,6 +85,7 @@ public class MainScreen implements Initializable {
         firstDayOfMonth=firstDayOfMonth.plusMonths(1);
         clearTextfields();
         setDateLabels();
+        fillMonth();
     }
 
     @FXML
@@ -102,6 +93,7 @@ public class MainScreen implements Initializable {
         firstDayOfMonth=firstDayOfMonth.minusMonths(1);
         clearTextfields();
         setDateLabels();
+        fillMonth();
     }
 
     @FXML
@@ -110,10 +102,11 @@ public class MainScreen implements Initializable {
         firstDayOfMonth=LocalDate.of(werkUren.getCurrentYear(),werkUren.getCurrentMonth(),1);
         clearTextfields();
         setDateLabels();
+        fillMonth();
     }
 
     @FXML
-    public void clearTextfields()
+    private void clearTextfields()
     {
         for (TextField textField: detailsTextFields
                 ) {textField.setText("");
@@ -149,14 +142,12 @@ public class MainScreen implements Initializable {
         day31Extra.setVisible(firstDayOfMonth.lengthOfMonth()>=31);
         day31Detail.setVisible(firstDayOfMonth.lengthOfMonth()>=31);
 
-
-
-
     }
 
     @FXML
     public void stopApp()
     {
+
         Platform.exit();
     }
 
@@ -177,7 +168,7 @@ public class MainScreen implements Initializable {
 
     }
 
-    public void setDateLabels(){
+    private void setDateLabels(){
         LocalDate teller,reset;
         monthLabel.setText(String.valueOf(firstDayOfMonth.getMonth()));
         yearLabel.setText(String.valueOf(firstDayOfMonth.getYear()));
@@ -208,28 +199,70 @@ public class MainScreen implements Initializable {
 
     }
 
+    private void updateNumbers(){
+        monthnumber=firstDayOfMonth.getMonthValue();
+        yearnumber=firstDayOfMonth.getYear();
+    }
+
     public void setWerkuren(WerkUren werkUren){
         this.werkUren=werkUren;
         dateToCurrentMonth();
-
         setDateLabels();
-
-        monthnumber=firstDayOfMonth.getMonthValue();
-        yearnumber=firstDayOfMonth.getYear();
 
 
 
         fillMonth();
 
+    }
 
+    private void fillFields(int counter){
+        String urenFieldName="day"+counter+"Uren";
+        String extrasFieldName="day"+counter+"Extra";
+        String detailFieldName="day"+counter+"Detail";
+        System.out.println(urenFieldName);
 
+        for (TextField textfield:urenTextFields
+                ) {
+            if(textfield.getId().equals(urenFieldName)){
+                textfield.setText(month.getFullMonth().get(counter).getTijd().toString());
+                }
+        }
 
-
-
+        for (TextField textfield:extraTextFields
+                ) {
+            if(textfield.getId().equals(extrasFieldName)){
+                textfield.setText(month.getFullMonth().get(counter).getExtras().toString());
+            }
+        }
+        for (TextField textfield:detailsTextFields
+                ) {
+            if(textfield.getId().equals(detailFieldName)){
+                textfield.setText(String.valueOf(month.getFullMonth().get(counter).getDetail()));
+            }
+        }
     }
 
     private void fillMonth(){
+        updateNumbers();
         month=werkUren.getCurrentMonthList(monthnumber,yearnumber);
+
+
+        /*for (Day day:month.getFullMonth().values()
+             ) {
+            System.out.println(day.getTijd());
+
+        }*/
+        for (Integer counter : month.getFullMonth().keySet()
+                ) {
+
+            System.out.println(month.getFullMonth().get(counter).getTijd());
+            fillFields(counter);
+        }
+
+        if(month.getFullMonth().size()>=1) {
+
+
+        }
 
 
     }
