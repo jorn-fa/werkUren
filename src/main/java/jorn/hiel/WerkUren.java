@@ -49,7 +49,7 @@ public final class WerkUren extends Application{
         this.primaryStage.setTitle("Werkuren Tracker");
         this.primaryStage.setResizable(true);
         this.primaryStage.setWidth(1000);
-        this.primaryStage.setHeight(700);
+        this.primaryStage.setHeight(800);
         this.primaryStage.setResizable(false);
         initRootLayout();
 

@@ -7,153 +7,439 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="661.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jorn.hiel.view.MainScreen">
-   <children>
-      <Button layoutX="150.0" layoutY="610.0" mnemonicParsing="false" onAction="#nextMonth" text="Next Month" />
-       <Button layoutX="414.0" layoutY="610.0" mnemonicParsing="false" text="Current Month" onAction="#dateToCurrentMonth"/>
-      <Button layoutX="43.0" layoutY="610.0" mnemonicParsing="false" onAction="#previousMonth" text="Previous Month" />
-       <Button layoutX="800" layoutY="610" mnemonicParsing="false" onAction="#stopApp" prefHeight="25.0" prefWidth="78.0" text="Exit" />
-      <Label fx:id="test" layoutX="57.0" layoutY="56.0" text="Month:" />
-      <Label layoutX="57.0" layoutY="92.0" text="Year:" />
-      <Label layoutX="509.0" layoutY="56.0" text="Hours to work:" />
-      <Label layoutX="509.0" layoutY="92.0" text="worked hours" />
-      <Label layoutX="632.0" layoutY="56.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
-      <Label layoutX="632.0" layoutY="92.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
-      <Label fx:id="monthLabel" layoutX="152.0" layoutY="56.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
-      <Label fx:id="yearLabel" layoutX="152.0" layoutY="92.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
-      <VBox layoutX="57.0" layoutY="137.0" prefHeight="429.0" prefWidth="343.0">
-         <children>
-             <Label fx:id="day1" prefHeight="17.0" prefWidth="131.0" text="Label">
-                 <VBox.margin>
-                     <Insets left="10.0" top="10.0" />
-                 </VBox.margin>
-             </Label>
-             <Label fx:id="day2" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day3" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day4" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day5" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day6" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day7" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day8" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day9" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day10" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day11" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day12" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day13" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day14" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day15" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
-             <Label fx:id="day16" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
-                 <Insets left="10.0" top="10.0" />
-             </VBox.margin></Label>
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jorn.hiel.view.MainScreen">
+    <children>
+        <Button layoutX="150.0" layoutY="610.0" mnemonicParsing="false" onAction="#nextMonth" text="Next Month" AnchorPane.bottomAnchor="25.0" />
+        <Button layoutX="414.0" layoutY="610.0" mnemonicParsing="false" onAction="#dateToCurrentMonth" text="Current Month" AnchorPane.bottomAnchor="25.0" />
+        <Button layoutX="43.0" layoutY="610.0" mnemonicParsing="false" onAction="#previousMonth" text="Previous Month" AnchorPane.bottomAnchor="25.0" />
+        <Button layoutX="800" layoutY="610" mnemonicParsing="false" onAction="#stopApp" prefHeight="25.0" prefWidth="78.0" text="Exit" AnchorPane.bottomAnchor="25.0" />
+        <Label fx:id="test" layoutX="57.0" layoutY="56.0" text="Month:" />
+        <Label layoutX="57.0" layoutY="92.0" text="Year:" />
+        <Label layoutX="509.0" layoutY="56.0" text="Hours to work:" />
+        <Label layoutX="509.0" layoutY="92.0" text="worked hours" />
+        <Label layoutX="632.0" layoutY="56.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+        <Label layoutX="632.0" layoutY="92.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+        <Label fx:id="monthLabel" layoutX="152.0" layoutY="56.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
+        <Label fx:id="yearLabel" layoutX="152.0" layoutY="92.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
+        <AnchorPane layoutX="57.0" layoutY="140.0" prefHeight="566.0" prefWidth="422.0" AnchorPane.leftAnchor="50.0">
+            <children>
+                <VBox prefHeight="452.0" prefWidth="156.0">
+                    <children>
+                        <Label fx:id="day1" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="0.0" /></VBox.margin></Label>
+                        <Label fx:id="day2" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day3" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day4" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day5" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day6" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day7" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day8" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day9" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day10" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day11" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day12" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day13" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day14" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day15" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                        <Label fx:id="day16" prefHeight="25.0" prefWidth="131.0" text="Label"><VBox.margin><Insets left="10.0" top="18.0" /></VBox.margin></Label>
+                    </children>
+                </VBox>
+                <VBox layoutX="158.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day1Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="0.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day2Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day3Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day4Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day5Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day6Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day7Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day8Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day9Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day10Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day11Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day12Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day13Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day14Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day15Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day16Uren" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                    </children></VBox>
+                <VBox layoutX="248.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day1Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="0.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day2Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day3Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day4Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day5Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day6Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day7Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day8Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day9Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day10Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day11Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day12Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day13Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day14Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day15Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day16Extra" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets></VBox>
+                <VBox layoutX="338.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day1Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="0.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day2Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day3Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day4Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day5Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day6Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day7Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day8Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day9Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day10Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day11Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day12Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day13Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day14Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day15Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                        <TextField fx:id="day16Detail" prefHeight="17.0" prefWidth="100.0"><VBox.margin><Insets left="10.0" top="10.0" /></VBox.margin></TextField>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="140.0" prefHeight="566.0" prefWidth="422.0" AnchorPane.rightAnchor="50.0">
+            <children>
+                <VBox prefHeight="452.0" prefWidth="156.0">
+                    <children>
+                        <Label fx:id="day17" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="0.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day18" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day19" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day20" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day21" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day22" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day23" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day24" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day25" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day26" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day27" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day28" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day29" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day30" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="day31" prefHeight="25.0" prefWidth="131.0" text="Label">
+                            <VBox.margin>
+                                <Insets left="10.0" top="18.0" />
+                            </VBox.margin>
+                        </Label>
 
-         </children>
-      </VBox>
-      <VBox layoutX="509.0" layoutY="137.0" prefHeight="429.0" prefWidth="343.0">
-         <children>
-            <Label fx:id="day17" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day18" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day19" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day20" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day21" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day22" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day23" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day24" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day25" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day26" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day27" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day28" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day29" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day30" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="day31" prefHeight="17.0" prefWidth="131.0" text="Label">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-      </VBox>
-   </children>
+                    </children>
+                </VBox>
+                <VBox layoutX="158.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day17Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="0.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day18Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day19Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day20Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day21Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day22Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day23Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day24Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day25Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day26Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day27Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day28Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day29Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day30Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day31Uren" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+
+                    </children>
+                </VBox>
+                <VBox layoutX="248.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day17Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="0.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day18Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day19Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day20Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day21Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day22Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day23Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day24Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day25Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day26Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day27Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day28Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day29Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day30Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day31Extra" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+
+                        </TextField>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+                <VBox layoutX="338.0" prefHeight="452.0" prefWidth="80.0">
+                    <children>
+                        <TextField fx:id="day17Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="0.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day18Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day19Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day20Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day21Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day22Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day23Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day24Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day25Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day26Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day27Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day28Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day29Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day30Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="day31Detail" prefHeight="17.0" prefWidth="100.0">
+                            <VBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </VBox.margin>
+                        </TextField>
+
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <Separator layoutY="123.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Separator layoutX="497.0" layoutY="309.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.topAnchor="123.0" />
+    </children>
 </AnchorPane>
