@@ -54,9 +54,9 @@ public class MaandTest {
         assertEquals(maand.getMaandnumber(),6);
         assertEquals(maand.getFullMonth().get(10),dag);
 
-
-
     }
+
+
 
 
 }

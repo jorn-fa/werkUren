@@ -1,4 +1,6 @@
+import jorn.hiel.DAO.DayDao;
 import jorn.hiel.DAO.DayDaoImpl;
+import jorn.hiel.DAO.MonthDaoImpl;
 import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Month;
 import org.junit.Before;
@@ -9,7 +11,7 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
-public class DbaseWrite {
+public class DbaseTest {
 
     private Month month;
     private Day dayOne;
@@ -57,6 +59,14 @@ public class DbaseWrite {
    {
        DayDaoImpl dayDaoImpl = new DayDaoImpl();
        assertTrue(dayDaoImpl.writeDay(month));
+   }
+
+   @Test
+    public void retrieveMonth()
+   {
+       MonthDaoImpl dbImport = new MonthDaoImpl();
+       Month test = dbImport.getFullMonth(6,2018);
+       assertTrue(test.getFullMonth().size()==2);
    }
 
 }

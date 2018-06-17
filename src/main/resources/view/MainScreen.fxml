@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="661.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jorn.hiel.view.MainScreen">
+   <children>
+      <Button layoutX="150.0" layoutY="610.0" mnemonicParsing="false" onAction="#nextMonth" text="Next Month" />
+       <Button layoutX="414.0" layoutY="610.0" mnemonicParsing="false" text="Current Month" onAction="#dateToCurrentMonth"/>
+      <Button layoutX="43.0" layoutY="610.0" mnemonicParsing="false" onAction="#previousMonth" text="Previous Month" />
+       <Button layoutX="800" layoutY="610" mnemonicParsing="false" onAction="#stopApp" prefHeight="25.0" prefWidth="78.0" text="Exit" />
+      <Label fx:id="test" layoutX="57.0" layoutY="56.0" text="Month:" />
+      <Label layoutX="57.0" layoutY="92.0" text="Year:" />
+      <Label layoutX="509.0" layoutY="56.0" text="Hours to work:" />
+      <Label layoutX="509.0" layoutY="92.0" text="worked hours" />
+      <Label layoutX="632.0" layoutY="56.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+      <Label layoutX="632.0" layoutY="92.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+      <Label fx:id="monthLabel" layoutX="152.0" layoutY="56.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
+      <Label fx:id="yearLabel" layoutX="152.0" layoutY="92.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
+      <VBox layoutX="57.0" layoutY="137.0" prefHeight="429.0" prefWidth="343.0">
+         <children>
+             <Label fx:id="day1" prefHeight="17.0" prefWidth="131.0" text="Label">
+                 <VBox.margin>
+                     <Insets left="10.0" top="10.0" />
+                 </VBox.margin>
+             </Label>
+             <Label fx:id="day2" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day3" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day4" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day5" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day6" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day7" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day8" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day9" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day10" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day11" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day12" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day13" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day14" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day15" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+             <Label fx:id="day16" prefHeight="17.0" prefWidth="131.0" text="Label"><VBox.margin>
+                 <Insets left="10.0" top="10.0" />
+             </VBox.margin></Label>
+
+         </children>
+      </VBox>
+      <VBox layoutX="509.0" layoutY="137.0" prefHeight="429.0" prefWidth="343.0">
+         <children>
+            <Label fx:id="day17" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day18" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day19" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day20" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day21" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day22" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day23" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day24" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day25" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day26" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day27" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day28" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day29" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day30" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="day31" prefHeight="17.0" prefWidth="131.0" text="Label">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
