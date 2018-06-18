@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import jorn.hiel.WerkUren;
 import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Month;
@@ -30,6 +27,8 @@ public class MainScreen implements Initializable {
 
     private LocalDate firstDayOfMonth;
 
+    @FXML
+    MenuItem setHoursOfWeek;
 
     private ObservableList<Month> monthData ;
 
@@ -70,9 +69,7 @@ public class MainScreen implements Initializable {
     private List<TextField> urenTextFields = new ArrayList<>();
     private List<TextField> extraTextFields = new ArrayList<>();
     private List<TextField> detailsTextFields = new ArrayList<>();
-
-
-
+    private List<TextField> allTextFields = new ArrayList<>();
 
 
 
@@ -103,29 +100,22 @@ public class MainScreen implements Initializable {
         clearTextfields();
         setDateLabels();
         fillMonth();
+
     }
 
     @FXML
     private void clearTextfields()
     {
-        for (TextField textField: detailsTextFields
-                ) {textField.setText("");
-
-        }
-        for (TextField textField: urenTextFields
-                ) {textField.setText("");
-
-        }
-        for (TextField textField: extraTextFields
-                ) {textField.setText("");
-
+        for (TextField textfield:allTextFields
+                ) {textfield.setOpacity(1.0);
+            textfield.clear();
         }
     }
 
 
 
-    @FXML
-    public void verifyVisibility()
+
+    private void verifyVisibility()
     {
         day29.setVisible(firstDayOfMonth.lengthOfMonth()>=29);
         day29Uren.setVisible(firstDayOfMonth.lengthOfMonth()>=29);
@@ -147,7 +137,6 @@ public class MainScreen implements Initializable {
     @FXML
     public void stopApp()
     {
-
         Platform.exit();
     }
 
@@ -165,6 +154,16 @@ public class MainScreen implements Initializable {
         extraTextFields.addAll(Arrays.asList(day1Extra,day2Extra,day3Extra,day4Extra,day5Extra,day6Extra,day7Extra,day8Extra,day9Extra,day10Extra,day11Extra,day12Extra,day13Extra,day14Extra,day15Extra,day16Extra,
                 day17Extra,day18Extra,day19Extra,day20Extra,day21Extra,day22Extra,day23Extra,day24Extra,day25Extra,day26Extra,day27Extra,
                 day28Extra,day29Extra,day30Extra,day31Extra));
+        allTextFields.addAll(urenTextFields);
+        allTextFields.addAll(detailsTextFields);
+        allTextFields.addAll(extraTextFields);
+
+
+        setHoursOfWeek.setOnAction(e -> {
+            System.out.println("Menu Item 1 Selected");
+        });
+
+
 
     }
 
@@ -188,12 +187,31 @@ public class MainScreen implements Initializable {
 
         teller=reset;
 
+
+
         for (TextField textfield: detailsTextFields)
         {
-            if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");
+            if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");textfield.setOpacity(0.5);
             }
             teller=teller.plusDays(1);
         }
+        teller=reset;
+
+        for (TextField textfield: extraTextFields)
+        {
+            if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");textfield.setOpacity(0.5);
+            }
+            teller=teller.plusDays(1);
+        }
+        teller=reset;
+
+        for (TextField textfield: urenTextFields)
+        {
+            if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");textfield.setOpacity(0.5);
+            }
+            teller=teller.plusDays(1);
+        }
+
 
 
 
@@ -208,18 +226,13 @@ public class MainScreen implements Initializable {
         this.werkUren=werkUren;
         dateToCurrentMonth();
         setDateLabels();
-
-
-
         fillMonth();
-
     }
 
     private void fillFields(int counter){
         String urenFieldName="day"+counter+"Uren";
         String extrasFieldName="day"+counter+"Extra";
         String detailFieldName="day"+counter+"Detail";
-        System.out.println(urenFieldName);
 
         for (TextField textfield:urenTextFields
                 ) {
@@ -247,20 +260,15 @@ public class MainScreen implements Initializable {
         month=werkUren.getCurrentMonthList(monthnumber,yearnumber);
 
 
-        /*for (Day day:month.getFullMonth().values()
-             ) {
-            System.out.println(day.getTijd());
 
-        }*/
-        for (Integer counter : month.getFullMonth().keySet()
-                ) {
 
-            System.out.println(month.getFullMonth().get(counter).getTijd());
-            fillFields(counter);
-        }
 
         if(month.getFullMonth().size()>=1) {
 
+            for (Integer counter : month.getFullMonth().keySet()
+                    ) {
+                fillFields(counter);
+            }
 
         }
 

@@ -38,4 +38,26 @@ public final class Day {
     public int getDetail() {
         return detail;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Day day = (Day) o;
+
+        if (detail != day.detail) return false;
+        if (time != null ? !time.equals(day.time) : day.time != null) return false;
+        if (date != null ? !date.equals(day.date) : day.date != null) return false;
+        return extras != null ? extras.equals(day.extras) : day.extras == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = time != null ? time.hashCode() : 0;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (extras != null ? extras.hashCode() : 0);
+        result = 31 * result + detail;
+        return result;
+    }
 }
