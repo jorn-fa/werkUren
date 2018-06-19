@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="282.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jorn.hiel.view.HoursPref">
    <children>
-      <Button layoutX="508.0" layoutY="355.0" mnemonicParsing="false" onAction="#saveAction" text="Save and Exit" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="508.0" layoutY="355.0" mnemonicParsing="false" onAction="#closeAction" text="Save and Exit" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
       <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="30.0" text="Configure work hours" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0" />
       <SplitPane dividerPositions="0.5040871934604905" layoutX="50.0" layoutY="45.0" prefHeight="160.0" prefWidth="341.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
         <items>

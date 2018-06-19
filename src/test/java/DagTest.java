@@ -7,6 +7,7 @@ import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
+
 public class DagTest {
 
     private Day dag;

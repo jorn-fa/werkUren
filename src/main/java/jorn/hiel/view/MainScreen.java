@@ -1,16 +1,20 @@
 package jorn.hiel.view;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import jorn.hiel.WerkUren;
-import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Month;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,6 +35,9 @@ public class MainScreen implements Initializable {
     MenuItem setHoursOfWeek;
 
     private ObservableList<Month> monthData ;
+
+    private Popup hoursPopup = new Popup();
+
 
 
 
@@ -161,8 +168,31 @@ public class MainScreen implements Initializable {
 
         setHoursOfWeek.setOnAction(e -> {
             System.out.println("Menu Item 1 Selected");
+            showHoursPopup();
         });
 
+
+
+
+
+    }
+
+    private void showHoursPopup()
+    {
+
+    Stage stage = new Stage();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/hoursPref.fxml"));
+
+            stage.setScene((new Scene(root)));
+            stage.setTitle("View / Edit hours");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

@@ -6,19 +6,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import jorn.hiel.DAO.MonthDaoImpl;
 import jorn.hiel.helpers.DbaseConnection;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import java.util.Properties;
+
 import jorn.hiel.helpers.Month;
+import jorn.hiel.helpers.PropReader;
 import jorn.hiel.view.MainScreen;
 import org.apache.log4j.Logger;
 
 public final class WerkUren extends Application{
 
+
+    private String[] workhours = new String[5];
+
+    private final static String fileName = "hours.properties";
+    private final static String directory = System.getProperty("user.dir") + "/src/main/resources/".replace("/", File.separator);
+
+    private static String Propfile = directory + fileName;
 
     private Logger logger = Logger.getLogger("werkUren");
     private Logger dbaseLogger = Logger.getLogger("dbase");
@@ -29,9 +41,9 @@ public final class WerkUren extends Application{
     private AnchorPane rootLayout;
     private Scene scene1;
 
-    public enum Days {
-        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
-    }
+
+
+
 
 
 
@@ -115,5 +127,26 @@ public final class WerkUren extends Application{
         MonthDaoImpl monthDaoImpl = new MonthDaoImpl();
         return monthDaoImpl.getFullMonth(month,year);
     }
+
+    public String[] getWorkhours(){
+        fillWorkhourDef();
+        return  workhours;
+    }
+
+    private void fillWorkhourDef(){
+            try {
+                Properties properties = PropReader.ReadProperties(Propfile);
+                workhours[0] = properties.getProperty("monday");
+                workhours[1]= properties.getProperty("tuesday");
+                workhours[2]= properties.getProperty("wednesday");
+                workhours[3]= properties.getProperty("thursday");
+                workhours[4]= properties.getProperty("friday");
+                logger.debug("Property file read - ok ");
+            } catch (Exception e) {
+                logger.error("Verify Property file: " + fileName);
+
+            }
+        }
+
 
 }
