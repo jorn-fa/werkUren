@@ -8,7 +8,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import jorn.hiel.DAO.DayDaoImpl;
 import jorn.hiel.DAO.MonthDaoImpl;
+import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.DbaseConnection;
 
 import java.io.File;
@@ -22,7 +24,7 @@ import jorn.hiel.helpers.PropReader;
 import jorn.hiel.view.MainScreen;
 import org.apache.log4j.Logger;
 
-public final class WerkUren extends Application{
+public class WerkUren extends Application{
 
 
     private String[] workhours = new String[5];
@@ -51,6 +53,7 @@ public final class WerkUren extends Application{
     }
 
     public static void main(String[] args) {launch(args);
+    WerkUren werkUren=new WerkUren();
 
     }
 
@@ -133,6 +136,7 @@ public final class WerkUren extends Application{
         return  workhours;
     }
 
+    //todo wissen, komt uit DB
     private void fillWorkhourDef(){
             try {
                 Properties properties = PropReader.ReadProperties(Propfile);
@@ -147,6 +151,10 @@ public final class WerkUren extends Application{
 
             }
         }
+
+
+
+
 
 
 }

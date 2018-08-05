@@ -1,6 +1,7 @@
 import jorn.hiel.DAO.DayDao;
 import jorn.hiel.DAO.DayDaoImpl;
 import jorn.hiel.DAO.MonthDaoImpl;
+import jorn.hiel.WerkUren;
 import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Month;
 import org.junit.Before;
@@ -68,5 +69,24 @@ public class DbaseTest {
        Month test = dbImport.getFullMonth(6,2018);
        assertTrue(test.getFullMonth().size()==2);
    }
+
+   @Test
+    public void writeConfigDay(){
+       DayDaoImpl dayDaoImpl = new DayDaoImpl();
+       assertTrue(dayDaoImpl.writeConfig(dayOne));
+       time = LocalTime.of(9,00);
+       dayOne = new Day(date1, time, extras, detail);
+       assertTrue(dayDaoImpl.writeConfig(dayOne));
+       assertTrue(dayDaoImpl.writeConfig(dayTwo));
+   }
+
+   @Test
+    public void readconfig(){
+       DayDaoImpl dayDao = new DayDaoImpl();
+       Day config[];
+       config=dayDao.readConfig();
+       assertTrue(config.length>0);
+   }
+
 
 }

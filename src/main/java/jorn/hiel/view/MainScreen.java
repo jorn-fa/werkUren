@@ -182,11 +182,16 @@ public class MainScreen implements Initializable {
 
     Stage stage = new Stage();
         try {
+
             Parent root = FXMLLoader.load(getClass().getResource("/view/hoursPref.fxml"));
+
+
+
 
             stage.setScene((new Scene(root)));
             stage.setTitle("View / Edit hours");
             stage.initModality(Modality.APPLICATION_MODAL);
+
             stage.showAndWait();
 
 
