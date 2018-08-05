@@ -11,12 +11,20 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Arrays;
 
 public class DayDaoImpl implements DayDao{
 
 
     private Connection connection = DbaseConnection.getConnection();
     private Logger logger = Logger.getLogger("dbase");
+
+
+    Day config[] = new Day[7];
+
+
+
+
 
 
     @Override
@@ -104,8 +112,11 @@ public class DayDaoImpl implements DayDao{
     public Day[] readConfig(){
 
 
+
+
         String SQL="select * from configdays";
-        Day config[] = new Day[7];
+        Day sortedDays[]=new Day[7];
+
         int counter=0;
 
         try(PreparedStatement ps = connection.prepareStatement(SQL)) {
@@ -125,8 +136,35 @@ public class DayDaoImpl implements DayDao{
             e.printStackTrace();
         }
 
+
+
+        sortedDays[0]=config[returnLocation("monday")];
+        sortedDays[1]=config[returnLocation("tuesday")];
+        sortedDays[2]=config[returnLocation("wednesday")];
+        sortedDays[3]=config[returnLocation("thursday")];
+       sortedDays[4]=config[returnLocation("friday")];
+       sortedDays[5]=new Day(LocalDate.now(),LocalTime.now(),LocalTime.now(),1);
+        sortedDays[6]=new Day(LocalDate.now(),LocalTime.now(),LocalTime.now(),1);
+
+
+       config=sortedDays;
+
+
         return config;
 
+    }
+
+    private int returnLocation(String string){
+
+        for(int i=0;i<config.length;i++)
+        {
+         if (config[i].getDatum().getDayOfWeek().toString().toLowerCase().equals(string.toLowerCase()))
+            {return i;
+        }
+        }
+
+
+        return 0;
     }
 
 

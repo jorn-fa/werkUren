@@ -67,8 +67,9 @@ public class HoursPref implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
         fillDays();
+        passDays();
+
 
     }
 
@@ -105,6 +106,7 @@ public class HoursPref implements Initializable {
 
     public void setWerkuren(WerkUren werkUren) {
         this.werkUren = werkUren;
+        System.out.println(werkUren.getName());
     }
 
     private void fillDays(){
@@ -115,6 +117,18 @@ public class HoursPref implements Initializable {
         wednesdayField.setText(compareDay("WEDNESDAY"));
         thursdayField.setText(compareDay("THURSDAY"));
         fridayField.setText(compareDay("FRIDAY"));
+    }
+
+    private void passDays(){
+
+        String[] hourList = new String[5];
+        hourList[0]=mondayField.getText();
+        hourList[1]=tuesdayField.getText();
+        hourList[2]=wednesdayField.getText();
+        hourList[3]=thursdayField.getText();
+        hourList[4]=fridayField.getText();
+
+
     }
 
 

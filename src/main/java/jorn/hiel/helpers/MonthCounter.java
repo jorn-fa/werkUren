@@ -26,7 +26,7 @@ public class MonthCounter extends WerkUren{
     }
 
     private String[] getDataFromProperties(){
-        return super.getWorkhours();
+        return super.getWorkHours();
 
     }
 

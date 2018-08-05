@@ -19,7 +19,7 @@ public class PropertiesTest {
     {
      assertTrue(hours==null);
 
-     hours=werkUren.getWorkhours();
+     hours=werkUren.getWorkHours();
      assertTrue(hours.length==5);
     }
 
@@ -27,7 +27,7 @@ public class PropertiesTest {
     public void hasAllValues()
     {
         assertTrue(hours==null);
-        hours=werkUren.getWorkhours();
+        hours=werkUren.getWorkHours();
         for (String string:hours
              ) {
             assertTrue(string.length()>0);
