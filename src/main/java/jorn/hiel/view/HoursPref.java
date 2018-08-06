@@ -8,11 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import jorn.hiel.DAO.DayDaoImpl;
 import jorn.hiel.WerkUren;
@@ -24,10 +21,8 @@ import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
 
 public class HoursPref implements Initializable {
 
@@ -93,7 +88,7 @@ public class HoursPref implements Initializable {
 
             System.out.println("opslaan");
 
-            Parent parent = FXMLLoader.load(getClass().getResource("/view/Mainscreen.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
             Scene rootScene = new Scene(parent);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.close();

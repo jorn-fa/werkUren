@@ -15,6 +15,7 @@ import jorn.hiel.helpers.DbaseConnection;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import jorn.hiel.helpers.Month;
 import jorn.hiel.view.MainScreen;
@@ -44,6 +45,10 @@ public class WerkUren extends Application{
 
     private String name;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,12 +57,15 @@ public class WerkUren extends Application{
     }
 
     public static void main(String[] args) {launch(args);
-    WerkUren werkUren=new WerkUren();
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        WerkUren werkUren=new WerkUren();
+        this.setName("test");
+
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Werkuren Tracker");
@@ -136,24 +144,17 @@ public class WerkUren extends Application{
     }
 
     public Day[] getWorkDays(){
+        //refresh data on changed call
+        fillWorkhourDef();
         return workDays;
     }
 
 
     public void fillWorkhourDef() {
-
-        System.out.println("geraakt er");
-
-
         DayDaoImpl dayDaoimpl = new DayDaoImpl();
-        workDays= dayDaoimpl.readConfig();
-
-        for (Day day : workDays
-             ) {
-            System.out.println(day.getDatum().getDayOfWeek().toString());
-
-        }
+        this.workDays= dayDaoimpl.readConfig();
     }
+
 
 
 }

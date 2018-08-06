@@ -12,15 +12,14 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import jorn.hiel.WerkUren;
+import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Month;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.LocalTime;
+import java.util.*;
 
 public class MainScreen implements Initializable {
 
@@ -40,6 +39,8 @@ public class MainScreen implements Initializable {
 
 
 
+    @FXML
+    private Label workHoursEachWeek;
 
     @FXML
     private Label monthLabel;
@@ -90,6 +91,7 @@ public class MainScreen implements Initializable {
         clearTextfields();
         setDateLabels();
         fillMonth();
+        calculateHoursToWork();
     }
 
     @FXML
@@ -98,6 +100,8 @@ public class MainScreen implements Initializable {
         clearTextfields();
         setDateLabels();
         fillMonth();
+        calculateHoursToWork();
+
     }
 
     @FXML
@@ -107,6 +111,7 @@ public class MainScreen implements Initializable {
         clearTextfields();
         setDateLabels();
         fillMonth();
+        calculateHoursToWork();
 
     }
 
@@ -169,7 +174,10 @@ public class MainScreen implements Initializable {
         setHoursOfWeek.setOnAction(e -> {
             System.out.println("Menu Item 1 Selected");
             showHoursPopup();
+
         });
+
+
 
 
 
@@ -190,14 +198,17 @@ public class MainScreen implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
 
 
-
-
             stage.showAndWait();
+            calculateHoursToWork();
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
+
 
 
     }
@@ -257,11 +268,15 @@ public class MainScreen implements Initializable {
         yearnumber=firstDayOfMonth.getYear();
     }
 
-    public void setWerkuren(WerkUren werkUren){
-        this.werkUren=werkUren;
+    public void setWerkuren(WerkUren transferUren){
+        this.werkUren=transferUren;
+        System.out.println(werkUren.getName());
         dateToCurrentMonth();
         setDateLabels();
         fillMonth();
+        calculateHoursToWork();
+
+
     }
 
     private void fillFields(int counter){
@@ -294,10 +309,6 @@ public class MainScreen implements Initializable {
         updateNumbers();
         month=werkUren.getCurrentMonthList(monthnumber,yearnumber);
 
-
-
-
-
         if(month.getFullMonth().size()>=1) {
 
             for (Integer counter : month.getFullMonth().keySet()
@@ -308,7 +319,82 @@ public class MainScreen implements Initializable {
         }
 
 
+
+    }
+
+    private void calculateHoursToWork()
+    {
+
+
+        int minutes=0;
+        int hours=0;
+
+        Day[] calculateDays;
+
+        calculateDays=Arrays.copyOf(werkUren.getWorkDays(),5);
+
+        for (Day day:calculateDays) {
+
+            int multiplier = dayCounter(day.getDatum().getDayOfWeek().getValue());
+
+            minutes+=(multiplier* (day.getTijd().getMinute()));
+
+            if (minutes>59){
+                hours+=Math.floor(minutes/60);
+            }
+
+            minutes=minutes%60;
+            hours+=multiplier*(day.getTijd().getHour());
+
+
+        }
+
+
+        workHoursEachWeek.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
+
+
+
+    }
+
+    private int counterdag = 0;
+    //todo  hier aan bezig, vereenvoudigen en uitwerken naar logischere lus
+    private int dayCounter(int day ){
+
+
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+
+        int endDate=firstDayOfMonth.getMonth().maxLength();
+
+        //Correction to handle 28 days as max instead of default 29 in Calender
+        if(!firstDayOfMonth.isLeapYear()&&firstDayOfMonth.getMonth().getValue()==2){
+            endDate=--endDate;
+            System.out.println("y");
+        }
+
+        //-1 correctie naar 0 based format
+        start.set(firstDayOfMonth.getYear(),firstDayOfMonth.getMonth().getValue()-1,0);
+        end.set(firstDayOfMonth.getYear(),firstDayOfMonth.getMonth().getValue()-1,endDate);
+
+
+
+        int numberOfDays = 0;
+
+        while (start.before(end)) {
+            if (start.get(Calendar.DAY_OF_WEEK) == day) {
+                numberOfDays++;
+                start.add(Calendar.DATE, 7);
+            } else {
+                start.add(Calendar.DATE, 1);
+            }
+        }
+
+
+        return numberOfDays;
+
+
     }
 
 
 }
+
