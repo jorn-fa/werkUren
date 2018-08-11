@@ -55,12 +55,12 @@ public class DbaseTest {
         assertEquals(month.getFullMonth().get(11), dayTwo);
     }
 
-   @Test
-    public void writeToDB()
-   {
+   //@Test
+    //public void writeToDB()
+   //{
        DayDaoImpl dayDaoImpl = new DayDaoImpl();
-       assertTrue(dayDaoImpl.writeDay(month));
-   }
+       //assertTrue(dayDaoImpl.writeDay(month));
+   //}
 
    @Test
     public void retrieveMonth()

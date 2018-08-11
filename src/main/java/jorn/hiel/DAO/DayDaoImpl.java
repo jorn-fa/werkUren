@@ -1,10 +1,12 @@
 package jorn.hiel.DAO;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.DbaseConnection;
 import jorn.hiel.helpers.Month;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -24,24 +26,63 @@ public class DayDaoImpl implements DayDao{
 
 
 
+    public boolean writeDay(Day day) {
+
+        String SQL = "update werkuren set  uren = ?, extraUren=?, Detail=? where datum=?";
+        int counter=0;
+
+        try (PreparedStatement ps= connection.prepareStatement(SQL)) {
+
+
+            ps.setTime(1, Time.valueOf(day.getTijd()));
+            ps.setTime(2, Time.valueOf(day.getExtras()));
+            ps.setInt(3, day.getDetail());
+            ps.setDate(4 , Date.valueOf(day.getDatum()));
+            counter=ps.executeUpdate();
+
+            System.out.println(day.getDetail());
+
+        }
+             catch(SQLException f) {
+                f.printStackTrace();
+            }
+
+            if(counter==0) {
+
+
+                SQL = "insert into werkuren(datum,uren,extraUren,detail) values (?,?,?,?)";
+                try (PreparedStatement ps = connection.prepareStatement(SQL)) {
+
+                    ps.setDate(1, Date.valueOf(day.getDatum()));
+                    ps.setTime(2, Time.valueOf(day.getTijd()));
+                    ps.setTime(3, Time.valueOf(day.getExtras()));
+                    ps.setInt(4, day.getDetail());
+                    counter = ps.executeUpdate();
+                } catch (SQLException e) {
+                    logger.error("SqlExeption @ writeDay");
+                    e.printStackTrace();
+                    throw (new IllegalArgumentException("Sql statement klopt niet"));
+
+                }
+            }
 
 
 
-    @Override
-    public boolean writeDay(Month month) {
+        return counter>0;
+    }
 
-        int counter = 0;
+
+
+
+    public void writeDay(Month month) {
+
+
 
         String SQL = "insert into werkuren(datum,uren,extraUren,detail) values (?,?,?,?)";
         try (PreparedStatement ps = connection.prepareStatement(SQL)) {
 
             for (Day day : month.getFullMonth().values()) {
-                ps.setDate(1 , Date.valueOf(day.getDatum()));
-                ps.setTime(2, Time.valueOf(day.getTijd()));
-                ps.setTime(3, Time.valueOf(day.getExtras()));
-                ps.setInt(4, day.getDetail());
-
-                counter+=ps.executeUpdate();
+               writeDay(day);
             }
 
 
@@ -52,9 +93,6 @@ public class DayDaoImpl implements DayDao{
 
         }
 
-        return counter>0;
-
-        //if(counter>0){return true;} else {return false;}
     }
 
 
@@ -110,8 +148,6 @@ public class DayDaoImpl implements DayDao{
     }
 
     public Day[] readConfig(){
-
-
 
 
         String SQL="select * from configdays";

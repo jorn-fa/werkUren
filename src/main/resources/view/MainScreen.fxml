@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jorn.hiel.view.MainScreen">
     <children>
         <Button layoutX="150.0" layoutY="610.0" mnemonicParsing="false" onAction="#nextMonth" text="Next Month" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="150.0" />
-        <Button layoutX="414.0" layoutY="610.0" mnemonicParsing="false" onAction="#dateToCurrentMonth" text="Current Month" AnchorPane.bottomAnchor="25.0" />
+        <Button layoutX="261.0" layoutY="750.0" mnemonicParsing="false" onAction="#dateToCurrentMonth" text="Current Month" AnchorPane.bottomAnchor="25.0" />
         <Button layoutX="43.0" layoutY="610.0" mnemonicParsing="false" onAction="#previousMonth" text="Previous Month" AnchorPane.bottomAnchor="25.0" />
         <Button layoutX="800" layoutY="610" mnemonicParsing="false" onAction="#stopApp" prefHeight="25.0" prefWidth="78.0" text="Exit" AnchorPane.bottomAnchor="25.0" />
         <Label fx:id="test" layoutX="57.0" layoutY="56.0" text="Month:" />
@@ -445,7 +445,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Exit" />
+              <MenuItem mnemonicParsing="false" onAction="#stopApp" text="Exit" />
+                  <MenuItem mnemonicParsing="false" onAction="#addADay" text="Add a day" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Preferences">
@@ -455,5 +456,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button fx:id="addADay" layoutX="548.0" layoutY="750.0" mnemonicParsing="false" onAction="#addADay" prefHeight="25.0" prefWidth="131.0" text="Add day" AnchorPane.bottomAnchor="25.0" />
     </children>
 </AnchorPane>

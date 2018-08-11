@@ -5,6 +5,6 @@ import jorn.hiel.helpers.Month;
 
 public interface DayDao {
 
-    boolean writeDay(Month month);
+
 
 }

@@ -15,7 +15,6 @@ import jorn.hiel.helpers.DbaseConnection;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 import jorn.hiel.helpers.Month;
 import jorn.hiel.view.MainScreen;

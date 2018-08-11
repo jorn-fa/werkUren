@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,12 +14,13 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import jorn.hiel.WerkUren;
 import jorn.hiel.helpers.Day;
+import jorn.hiel.helpers.Daytype;
 import jorn.hiel.helpers.Month;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.*;
 
 public class MainScreen implements Initializable {
@@ -171,17 +173,16 @@ public class MainScreen implements Initializable {
         allTextFields.addAll(extraTextFields);
 
 
+        for (TextField textfield:allTextFields
+             ) {textfield.setAlignment(Pos.CENTER);
+
+        }
+
         setHoursOfWeek.setOnAction(e -> {
-            System.out.println("Menu Item 1 Selected");
+
             showHoursPopup();
 
         });
-
-
-
-
-
-
 
     }
 
@@ -205,13 +206,34 @@ public class MainScreen implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void addADay(){
+
+        Stage stage = new Stage();
+        try {
 
 
+            Parent root = FXMLLoader.load(getClass().getResource("/view/addDay.fxml"));
+            stage.setScene((new Scene(root)));
+            stage.setTitle("Add a day");
+            stage.initModality(Modality.APPLICATION_MODAL);
 
 
+            stage.showAndWait();
+            calculateHoursToWork();
 
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        fillMonth();
 
     }
+
+
 
     private void setDateLabels(){
         LocalDate teller,reset;
@@ -234,8 +256,7 @@ public class MainScreen implements Initializable {
         teller=reset;
 
 
-
-        for (TextField textfield: detailsTextFields)
+      for (TextField textfield: detailsTextFields)
         {
             if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");textfield.setOpacity(0.5);
             }
@@ -257,9 +278,6 @@ public class MainScreen implements Initializable {
             }
             teller=teller.plusDays(1);
         }
-
-
-
 
     }
 
@@ -300,7 +318,16 @@ public class MainScreen implements Initializable {
         for (TextField textfield:detailsTextFields
                 ) {
             if(textfield.getId().equals(detailFieldName)){
-                textfield.setText(String.valueOf(month.getFullMonth().get(counter).getDetail()));
+
+                Integer temp=month.getFullMonth().get(counter).getDetail();
+                String output="";
+
+
+                if (temp==Daytype.WERK.ordinal()){output="";}
+                if (temp==Daytype.ZIEK.ordinal()){output="Ziek";}
+                if (temp==Daytype.VERLOF.ordinal()){output="Verlof";}
+
+                textfield.setText(output);
             }
         }
     }
@@ -356,10 +383,9 @@ public class MainScreen implements Initializable {
 
     }
 
-    private int counterdag = 0;
-    //todo  hier aan bezig, vereenvoudigen en uitwerken naar logischere lus
-    private int dayCounter(int day ){
 
+
+    private int dayCounter(int day ){
 
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
@@ -369,16 +395,16 @@ public class MainScreen implements Initializable {
         //Correction to handle 28 days as max instead of default 29 in Calender
         if(!firstDayOfMonth.isLeapYear()&&firstDayOfMonth.getMonth().getValue()==2){
             endDate=--endDate;
-            System.out.println("y");
         }
 
         //-1 correctie naar 0 based format
         start.set(firstDayOfMonth.getYear(),firstDayOfMonth.getMonth().getValue()-1,0);
         end.set(firstDayOfMonth.getYear(),firstDayOfMonth.getMonth().getValue()-1,endDate);
 
-
-
         int numberOfDays = 0;
+
+        Integer test=0;
+
 
         while (start.before(end)) {
             if (start.get(Calendar.DAY_OF_WEEK) == day) {
@@ -388,7 +414,6 @@ public class MainScreen implements Initializable {
                 start.add(Calendar.DATE, 1);
             }
         }
-
 
         return numberOfDays;
 
