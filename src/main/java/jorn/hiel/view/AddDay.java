@@ -85,10 +85,18 @@ public class AddDay implements Initializable{
 
         extraWorkedTextfield.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)){
-                otherTextfield.requestFocus();
+                choichesChoicheBox.requestFocus();
             }
 
         });
+
+        choichesChoicheBox.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)){
+                dayTextfield.requestFocus();
+            }
+
+        });
+
 
         choichesChoicheBox.setItems(dayselection);
         choichesChoicheBox.setValue("Werk");
@@ -132,7 +140,7 @@ public class AddDay implements Initializable{
         LocalTime extras = LocalTime.parse(extraWorkedTextfield.getText());
 
         Integer other=0;
-        System.out.println(choichesChoicheBox.getValue()+"<");
+
 
         if(choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.VERLOF.name())){other=Daytype.VERLOF.ordinal();}
         if(choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.ZIEK.name())){other=Daytype.ZIEK.ordinal();}

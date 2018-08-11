@@ -45,6 +45,9 @@ public class MainScreen implements Initializable {
     private Label workHoursEachWeek;
 
     @FXML
+    private Label workedHours;
+
+    @FXML
     private Label monthLabel;
 
     @FXML
@@ -230,6 +233,7 @@ public class MainScreen implements Initializable {
         }
 
         fillMonth();
+        calculateHoursToWork();
 
     }
 
@@ -288,7 +292,6 @@ public class MainScreen implements Initializable {
 
     public void setWerkuren(WerkUren transferUren){
         this.werkUren=transferUren;
-        System.out.println(werkUren.getName());
         dateToCurrentMonth();
         setDateLabels();
         fillMonth();
@@ -306,6 +309,7 @@ public class MainScreen implements Initializable {
                 ) {
             if(textfield.getId().equals(urenFieldName)){
                 textfield.setText(month.getFullMonth().get(counter).getTijd().toString());
+
                 }
         }
 
@@ -313,6 +317,7 @@ public class MainScreen implements Initializable {
                 ) {
             if(textfield.getId().equals(extrasFieldName)){
                 textfield.setText(month.getFullMonth().get(counter).getExtras().toString());
+
             }
         }
         for (TextField textfield:detailsTextFields
@@ -356,6 +361,7 @@ public class MainScreen implements Initializable {
         int minutes=0;
         int hours=0;
 
+
         Day[] calculateDays;
 
         calculateDays=Arrays.copyOf(werkUren.getWorkDays(),5);
@@ -377,8 +383,46 @@ public class MainScreen implements Initializable {
         }
 
 
+        for (Day day:month.getFullMonth().values()
+             ) {
+            int temp;
+            if(day.getDetail()==Daytype.ZIEK.ordinal()){ temp=day.getDatum().getDayOfWeek().getValue();
+                    hours-=werkUren.getWorkDays()[temp-1].getTijd().getHour();
+            }
+            if(day.getDetail()==Daytype.VERLOF.ordinal()){ temp=day.getDatum().getDayOfWeek().getValue();
+                hours-=werkUren.getWorkDays()[temp-1].getTijd().getHour();
+            }
+
+        }
+
         workHoursEachWeek.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
 
+        calculateHoursWorked();
+
+    }
+
+    private void calculateHoursWorked()
+    {
+        int hours=0;
+        int minutes=0;
+        for (Day day:month.getFullMonth().values()
+             ) {
+            if(day.getDetail()==Daytype.WERK.ordinal()){
+                hours+=day.getTijd().getHour();
+                hours+=day.getExtras().getHour();
+                minutes+=day.getTijd().getMinute();
+                minutes+=day.getExtras().getMinute();
+            }
+
+        }
+
+        if (minutes>59){
+            hours+=Math.floor(minutes/60);
+        }
+
+        minutes=minutes%60;
+
+        workedHours.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
 
 
     }
