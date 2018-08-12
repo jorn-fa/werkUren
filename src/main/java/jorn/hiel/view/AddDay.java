@@ -164,8 +164,12 @@ public class AddDay implements Initializable{
         }
 
 
+        if (dayTextfield.getText().matches("\\d{2}/\\d{2}")){
+            dayTextfield.setText(dayTextfield.getText()+String.valueOf(LocalDate.now().getYear()));
 
 
+
+        }
 
         if (hoursWorkedTextField.getText().matches("\\d{1}:\\d{1}")) {
             String temp = hoursWorkedTextField.getText();

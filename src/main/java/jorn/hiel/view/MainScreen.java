@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -40,6 +41,8 @@ public class MainScreen implements Initializable {
     private Popup hoursPopup = new Popup();
 
 
+    @FXML
+    private Label differenceWorkHoursLabel;
 
     @FXML
     private Label workHoursEachWeek;
@@ -423,6 +426,29 @@ public class MainScreen implements Initializable {
         minutes=minutes%60;
 
         workedHours.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
+        calculateDifference();
+
+
+    }
+
+    private void calculateDifference(){
+
+        int totaltime;
+        int workedTime;
+        int result;
+        int totalFieldLength=workHoursEachWeek.getText().length();
+        int workedFieldLength=workedHours.getText().length();
+        String token="  ";
+
+        totaltime=(Integer.valueOf(workHoursEachWeek.getText().substring(0,totalFieldLength-5))*60)+Integer.valueOf(workHoursEachWeek.getText().substring(totalFieldLength-2,totalFieldLength));
+        workedTime=(Integer.valueOf(workedHours.getText().substring(0,workedFieldLength-5))*60)+Integer.valueOf(workedHours.getText().substring(workedFieldLength-2,workedFieldLength));
+
+        result=(totaltime-workedTime);
+
+        if (result>0){differenceWorkHoursLabel.setTextFill(Color.RED);token+="Short";}
+        if (result<0){differenceWorkHoursLabel.setTextFill(Color.BLUE);result=Math.abs(result);token+="Surplus";}
+
+        differenceWorkHoursLabel.setText(String.valueOf((int)Math.floor(result/60))+" : "+String.valueOf(result%60) +" "+token );
 
 
     }

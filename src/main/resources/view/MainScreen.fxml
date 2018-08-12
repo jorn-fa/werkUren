@@ -15,10 +15,10 @@
         <Button layoutX="800" layoutY="610" mnemonicParsing="false" onAction="#stopApp" prefHeight="25.0" prefWidth="78.0" text="Exit" AnchorPane.bottomAnchor="25.0" />
         <Label fx:id="test" layoutX="57.0" layoutY="56.0" text="Month:" />
         <Label layoutX="57.0" layoutY="92.0" text="Year:" />
-        <Label layoutX="509.0" layoutY="56.0" text="Hours to work:" />
-        <Label layoutX="509.0" layoutY="92.0" text="worked hours" />
-        <Label fx:id="workHoursEachWeek" layoutX="632.0" layoutY="56.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
-        <Label fx:id="workedHours" layoutX="632.0" layoutY="92.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+        <Label layoutX="382.0" layoutY="56.0" text="Hours to work:" />
+        <Label layoutX="382.0" layoutY="92.0" text="worked hours" />
+        <Label fx:id="workHoursEachWeek" layoutX="505.0" layoutY="56.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
+        <Label fx:id="workedHours" layoutX="505.0" layoutY="92.0" prefHeight="17.0" prefWidth="57.0" text="Label" />
         <Label fx:id="monthLabel" layoutX="152.0" layoutY="56.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
         <Label fx:id="yearLabel" layoutX="152.0" layoutY="92.0" prefHeight="17.0" prefWidth="134.0" text="Label" />
         <AnchorPane layoutX="57.0" layoutY="140.0" prefHeight="566.0" prefWidth="422.0" AnchorPane.leftAnchor="50.0">
@@ -456,6 +456,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="addADay" layoutX="548.0" layoutY="750.0" mnemonicParsing="false" onAction="#addADay" prefHeight="25.0" prefWidth="131.0" text="Add day" AnchorPane.bottomAnchor="25.0" />
+      <Button fx:id="addADay" layoutX="548.0" layoutY="750.0" mnemonicParsing="false" onAction="#addADay" prefHeight="25.0" prefWidth="131.0" text="Add day" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="250.0" />
+      <Label layoutX="695.0" layoutY="56.0" text="Difference =" />
+      <Label fx:id="differenceWorkHoursLabel" layoutX="825.0" layoutY="56.0" text="Label" />
     </children>
 </AnchorPane>
