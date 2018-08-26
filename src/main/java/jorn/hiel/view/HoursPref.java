@@ -104,10 +104,15 @@ public class HoursPref implements Initializable {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode().equals(KeyCode.ENTER)){
-                    mondayField.requestFocus();
+                    saveButton.requestFocus();
                 }
             }
         });
+
+        saveButton.setDefaultButton(true);
+
+
+
 
 
 
