@@ -84,7 +84,7 @@ public class MainScreen implements Initializable {
     private List<TextField> allTextFields = new ArrayList<>();
 
     @FXML
-    private Button addAdayButton;
+    private Button addAdayButton,exitButton;
 
 
 
@@ -192,6 +192,8 @@ public class MainScreen implements Initializable {
         });
 
         addAdayButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){addADay();}});
+        exitButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){stopApp();}});
+
 
     }
 
