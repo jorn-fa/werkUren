@@ -84,7 +84,7 @@ public class MainScreen implements Initializable {
     private List<TextField> allTextFields = new ArrayList<>();
 
     @FXML
-    private Button addAdayButton,exitButton;
+    private Button addAdayButton,exitButton, nextMonthButton, prevMonthButton, currentMonthButton;
 
 
 
@@ -193,6 +193,9 @@ public class MainScreen implements Initializable {
 
         addAdayButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){addADay();}});
         exitButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){stopApp();}});
+        prevMonthButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){previousMonth();}});
+        nextMonthButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){nextMonth();}});
+        currentMonthButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){dateToCurrentMonth();}});
 
 
     }
