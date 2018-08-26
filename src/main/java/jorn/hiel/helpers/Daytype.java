@@ -9,7 +9,7 @@ public enum Daytype {
 
     private int type;
 
-    private Daytype(int type){
+    Daytype(int type){
         this.type=type;
     }
 

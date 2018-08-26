@@ -1,5 +1,6 @@
 package jorn.hiel.view;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ import java.util.ResourceBundle;
 
 public class AddDay implements Initializable{
 
-    ObservableList<String> dayselection = FXCollections.observableArrayList("Werk","Ziek", "Verlof");
+    private ObservableList<String> dayselection = FXCollections.observableArrayList("Werk","Ziek", "Verlof");
 
     @FXML
     private TextField dayTextfield;
@@ -43,8 +44,6 @@ public class AddDay implements Initializable{
     @FXML
     private TextField hoursWorkedTextField;
 
-    @FXML
-    private TextField otherTextfield;
 
     @FXML
     private Button saveAndExit;
@@ -69,6 +68,11 @@ public class AddDay implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Platform.runLater(new Runnable() {
+            public void run() {
+                dayTextfield.requestFocus();
+            }
+        });
 
                 dayTextfield.setOnKeyPressed(event -> {
                     if (event.getCode().equals(KeyCode.ENTER)){
@@ -92,17 +96,31 @@ public class AddDay implements Initializable{
 
         choichesChoicheBox.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)){
-                dayTextfield.requestFocus();
+                //dayTextfield.requestFocus();
+                saveAndExit.requestFocus();
             }
 
         });
+
+        saveAndExit.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){
+            try {
+                saveAndExit();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }});
 
 
         choichesChoicheBox.setItems(dayselection);
         choichesChoicheBox.setValue("Werk");
 
 
+
+
     }
+
+
+
 
 
     @FXML
@@ -159,16 +177,26 @@ public class AddDay implements Initializable{
 
         if(dayTextfield.getText().length()==0&& hoursWorkedTextField.getText().length()==0&& extraWorkedTextfield.getText().length()==0&&choichesChoicheBox.getValue().equals("Werk")){
 
-            canPass=true;
-            return canPass;
+
+            return true;
         }
 
 
         if (dayTextfield.getText().matches("\\d{2}/\\d{2}")){
-            dayTextfield.setText(dayTextfield.getText()+String.valueOf(LocalDate.now().getYear()));
+            dayTextfield.setText(dayTextfield.getText()+"/"+String.valueOf(LocalDate.now().getYear()));
 
 
 
+        }
+
+        if(choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.VERLOF.name())||choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.ZIEK.name())){
+            hoursWorkedTextField.setText("00:00");
+            extraWorkedTextfield.setText("00:00");
+
+            if(!dayTextfield.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+
+                alert.setContentText("Forgot to enter the date");
+            }
         }
 
         if (hoursWorkedTextField.getText().matches("\\d{1}:\\d{1}")) {
@@ -207,15 +235,7 @@ public class AddDay implements Initializable{
             alert.setContentText("Day type selected without details");
         }
 
-        if(choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.VERLOF.name())||choichesChoicheBox.getValue().toString().toUpperCase().equals(Daytype.ZIEK.name())){
-            hoursWorkedTextField.setText("00:00");
-            extraWorkedTextfield.setText("00:00");
 
-            if(!dayTextfield.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-
-                alert.setContentText("Forgot to enter the date");
-            }
-        }
 
 
 

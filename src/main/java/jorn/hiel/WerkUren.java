@@ -85,7 +85,7 @@ public class WerkUren extends Application{
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/MainScreen.fxml"));
-            rootLayout = (AnchorPane) loader.load();          // Show the scene containing the root layout.
+            rootLayout = loader.load();          // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
 
             MainScreen controller = loader.getController();

@@ -1,24 +1,25 @@
 package jorn.hiel.view;
 
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import jorn.hiel.WerkUren;
 import jorn.hiel.helpers.Day;
 import jorn.hiel.helpers.Daytype;
 import jorn.hiel.helpers.Month;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -35,11 +36,6 @@ public class MainScreen implements Initializable {
 
     @FXML
     MenuItem setHoursOfWeek;
-
-    private ObservableList<Month> monthData ;
-
-    private Popup hoursPopup = new Popup();
-
 
     @FXML
     private Label differenceWorkHoursLabel;
@@ -86,6 +82,9 @@ public class MainScreen implements Initializable {
     private List<TextField> extraTextFields = new ArrayList<>();
     private List<TextField> detailsTextFields = new ArrayList<>();
     private List<TextField> allTextFields = new ArrayList<>();
+
+    @FXML
+    private Button addAdayButton;
 
 
 
@@ -180,15 +179,19 @@ public class MainScreen implements Initializable {
 
 
         for (TextField textfield:allTextFields
-             ) {textfield.setAlignment(Pos.CENTER);
+             ) {textfield.setAlignment(Pos.CENTER); textfield.setEditable(false);
 
         }
 
-        setHoursOfWeek.setOnAction(e -> {
+        setHoursOfWeek.setOnAction(e -> showHoursPopup());
 
-            showHoursPopup();
-
+        Platform.runLater(new Runnable() {
+            public void run() {
+                addAdayButton.requestFocus();
+            }
         });
+
+        addAdayButton.setOnKeyPressed((event) -> {if (event.getCode() == KeyCode.ENTER){addADay();}});
 
     }
 
@@ -263,7 +266,10 @@ public class MainScreen implements Initializable {
         teller=reset;
 
 
-      for (TextField textfield: detailsTextFields)
+
+
+
+        for (TextField textfield: detailsTextFields)
         {
             if(teller.getDayOfWeek().toString().equals("SATURDAY")||teller.getDayOfWeek().toString().equals("SUNDAY")){textfield.setText("weekend");textfield.setOpacity(0.5);
             }
@@ -398,7 +404,7 @@ public class MainScreen implements Initializable {
 
         }
 
-        workHoursEachWeek.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
+        workHoursEachWeek.setText(String.format("%02d",hours ) + " : " + String.format("%02d",  minutes));
 
         calculateHoursWorked();
 
@@ -425,7 +431,7 @@ public class MainScreen implements Initializable {
 
         minutes=minutes%60;
 
-        workedHours.setText(String.format(String.format("%02d",hours ) + " : " ) + String.format("%02d",  minutes));
+        workedHours.setText(String.format("%02d",hours ) + " : " + String.format("%02d",  minutes));
         calculateDifference();
 
 
