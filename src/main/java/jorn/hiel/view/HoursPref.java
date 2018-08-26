@@ -1,7 +1,6 @@
 package jorn.hiel.view;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,13 +11,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import jorn.hiel.DAO.DayDaoImpl;
 import jorn.hiel.WerkUren;
 import jorn.hiel.helpers.Day;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +30,7 @@ public class HoursPref implements Initializable {
     private WerkUren werkUren;
     private Stage stage;
     private boolean closed=false;
-    Day days[];
+    private Day days[];
 
 
 
@@ -68,59 +65,19 @@ public class HoursPref implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        mondayField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ENTER)){
-                    tuesdayField.requestFocus();
-                }
-            }
-        });
-        tuesdayField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ENTER)){
-                    wednesdayField.requestFocus();
-                }
-            }
-        });
-        wednesdayField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ENTER)){
-                    thursdayField.requestFocus();
-                }
-            }
-        });
-        thursdayField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ENTER)){
-                    fridayField.requestFocus();
-                }
-            }
-        });
-        fridayField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ENTER)){
-                    saveButton.requestFocus();
-                }
-            }
-        });
+
+
+        mondayField.setOnKeyPressed((event) -> {if (event.getCode()==KeyCode.ENTER){tuesdayField.requestFocus();}} );
+        tuesdayField.setOnKeyPressed((event) -> {if (event.getCode()==KeyCode.ENTER){wednesdayField.requestFocus();}} );
+        wednesdayField.setOnKeyPressed((event) -> {if (event.getCode()==KeyCode.ENTER){thursdayField.requestFocus();}} );
+        thursdayField.setOnKeyPressed((event) -> {if (event.getCode()==KeyCode.ENTER){fridayField.requestFocus();}} );
+        fridayField.setOnKeyPressed((event) -> {if (event.getCode()==KeyCode.ENTER){saveButton.requestFocus();}} );
+
 
         saveButton.setDefaultButton(true);
 
-
-
-
-
-
-
         fillDays();
         passDays();
-
-
     }
 
     @FXML
@@ -134,14 +91,11 @@ public class HoursPref implements Initializable {
              ) {
             counter += verifyData(textfield) ? 1 : 0;
         }
-
-
+        
 
         if( counter==weekfields.length){
 
             saveData();
-
-
 
             Parent parent = FXMLLoader.load(getClass().getResource("/view/MainScreen.fxml"));
             Scene rootScene = new Scene(parent);
@@ -149,9 +103,6 @@ public class HoursPref implements Initializable {
             window.close();
 
         }
-
-
-
     }
 
     public void setWerkuren(WerkUren werkUren) {
